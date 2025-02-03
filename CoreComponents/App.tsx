@@ -1,35 +1,30 @@
 import { StatusBar } from "expo-status-bar";
-import { View, Button, Image, Text, Pressable } from "react-native";
-import LogoImg from "./assets/splash-icon.png";
+import { useState } from "react";
+import { View, Button, Modal, Text } from "react-native";
 export default function App() {
+  const [isModalVisible, SetIsModalVisible] = useState(false);
   return (
-    <View style={{ flex: 1, paddingTop: 45, paddingHorizontal: 10 }}>
+    <View style={{ flex: 1, padding: 60, backgroundColor: "plum" }}>
       <Button
         title="Click Me"
-        onPress={() => console.log("Btn clicked")}
+        onPress={() => SetIsModalVisible(true)}
         color="midnightblue"
-        disabled
       />
-      <Pressable
-        onPress={() => console.log("Images Pressed")}
-        onPressOut={() => console.log("Onpress Out")}
-        onLongPress={() => console.log("Holded for 500 millisecond")}
+      <Modal
+        visible={isModalVisible}
+        onRequestClose={() => SetIsModalVisible(false)}
+        animationType="slide" // fade , none , slide
+        presentationStyle="pageSheet" // pageSheet, formSheet
       >
-        <Image
-          source={LogoImg}
-          style={{ height: 300, width: 300, paddingVertical: 10 }}
-        />
-      </Pressable>
-      <Pressable onPress={() => console.log("Text Pressed")}>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-          itaque labore optio laboriosam, tempora exercitationem rem. Culpa
-          quae, ea at dolor assumenda consequatur corporis quaerat voluptate,
-          corrupti iste, similique voluptates omnis voluptatibus recusandae sit
-          distinctio rerum! Sunt cum eos nostrum rerum saepe, dolorem debitis
-          dolorum quasi amet ad rem iure.
-        </Text>
-      </Pressable>
+        <View style={{ flex: 1, backgroundColor: "lightblue", padding: 60 }}>
+          <Text> Modal Content </Text>
+          <Button
+            title="Close Modal"
+            color=" midnightblue"
+            onPress={() => SetIsModalVisible(false)}
+          />
+        </View>
+      </Modal>
       <StatusBar />
     </View>
   );
