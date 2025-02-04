@@ -1,19 +1,13 @@
-import { useState } from "react";
-import { View, StatusBar, Button } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 
 export default function App() {
-  const [hidden, setHidden] = useState(false);
-
-  const toggle = () => setHidden((prev) => !prev);
-
   return (
-    <View style={{ flex: 1, padding: 60, backgroundColor: "plum" }}>
-      <StatusBar
-        backgroundColor="lightgreen"
-        barStyle="dark-content"
-        hidden={hidden}
+    <View style={{ flex: 1, padding: 60, backgroundColor: "#dadada" }}>
+      <ActivityIndicator />
+      <ActivityIndicator
+        size="large" // large , small
       />
-      <Button title="Toggle Status Bar" onPress={toggle} />
+      <ActivityIndicator color="midnightblue" animating />
     </View>
   );
 }
