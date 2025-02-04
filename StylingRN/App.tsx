@@ -4,10 +4,10 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={[styles.box, styles.lightblueBg]}>
+      <View style={[styles.box, styles.lightblueBg, styles.boxShadow]}>
         <Text>Lightblue Box</Text>
       </View>
-      <View style={[styles.box, styles.lightGreenBg]}>
+      <View style={[styles.box, styles.lightGreenBg, styles.androidShadow]}>
         <Text>LightGreen Box</Text>
       </View>
       <StatusBar style="auto" />
@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 60,
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
   },
   box: {
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 250,
     // padding: 10,
     paddingHorizontal: 10,
     paddingVertical: 20,
@@ -39,5 +39,17 @@ const styles = StyleSheet.create({
   },
   lightGreenBg: {
     backgroundColor: "lightgreen",
+  },
+  boxShadow: {
+    shadowColor: "#0000ff",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+  },
+  androidShadow: {
+    elevation: 10,
   },
 });
